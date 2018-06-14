@@ -1,0 +1,36 @@
+program gauss1d
+implicit none
+integer::npoints,i
+real(kind=8)::c,m,a,b,integral,x
+real(kind=8),allocatable::T(:),W(:)
+
+! get input variables
+write(*,*) 'Number of Gauss points:'
+read(*,*) npoints
+write(*,*) 'a='
+read(*,*) a
+write(*,*) 'b='
+read(*,*) b
+
+! get gauss weights and points
+allocate(T(npoints),W(npoints))
+do i=1,npoints
+write(*,*) 'T'
+read(*,*) T(i)
+write(*,*) 'W'
+read(*,*) W(i)
+end do
+
+! variable transformation
+c=0.5*(b+a)
+m=0.5*(b-a)
+
+! compute integral
+integral=0
+do i=1,npoints
+x=c+m*T(i)
+integral=integral+m*W(i)*(x**2)
+end do
+
+write(*,*) integral
+end

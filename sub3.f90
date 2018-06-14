@@ -1,0 +1,9 @@
+SUBROUTINE test3sub(A)
+
+INTEGER :: A(3)
+A(1)=4
+A(2)=5
+A(3)=6
+
+RETURN
+END
